@@ -10,6 +10,18 @@ import logging
 
 # git_Ebrahim!Eyoel!Julio_eeg_gui
 
+global logger
+
+# git_Ebrahim_eeg_gui__logging
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+handler = logging.FileHandler('gui_ann_'+time.strftime("%Y_%m_%d_%H_%M_%S")+'.log')
+handler.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+
+
 
 # git_Eyoel_eeg_gui__ ًWindow Initialize_0
 me = Tk()
@@ -245,3 +257,6 @@ result_var = Label(frame_result, textvariable=result_var_text, font=("Times", 25
 result_var.pack(side=BOTTOM)
 result_fix = Label(frame_result, text=("The movement is"), font=("Times", 20))
 result_fix.pack(side=BOTTOM)
+
+logger.info("GUI window now shown")
+me.mainloop()
