@@ -228,3 +228,20 @@ frame6 = Frame(Par_group)
 frame6.pack(fill=X)
 btn_check = Button(frame6, padx=2, pady=2, bd=4, bg='white', command=lambda: eval_but(), text="Detect movement")
 btn_check.pack(fill=X)
+
+# image
+img = PhotoImage(file = "./img.png")
+img = img.zoom(25)
+img = img.subsample(40)
+background_label = Label(frame_group, image=img)
+background_label.config(width=280,height=220)
+background_label.pack()
+
+# Result Layer
+frame_result = Frame(me)
+frame_result.pack(fill=X,side=BOTTOM)
+result_var_text=StringVar(me)
+result_var = Label(frame_result, textvariable=result_var_text, font=("Times", 25, 'bold'),fg="red")
+result_var.pack(side=BOTTOM)
+result_fix = Label(frame_result, text=("The movement is"), font=("Times", 20))
+result_fix.pack(side=BOTTOM)
