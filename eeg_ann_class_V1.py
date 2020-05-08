@@ -51,3 +51,40 @@ class eeg_ann:
 
         return A2, cache
 
+# git_Juilio_eeg_ann_class__compute_cost_5
+    def compute_cost(self,A2, Y, parameters):
+        m = Y.shape[1]
+        W1 = parameters['W1']
+        W2 = parameters['W2']
+        try:
+            logprobs = np.multiply(np.log(A2), Y) + np.multiply(np.log(1 - A2 * 1 / np.amax(A2)), (1 - Y * 1 / np.amax(Y)))
+        except:
+            logprobs=Y
+        logprobs[np.isnan(logprobs)] = 0
+        cost = - np.sum(logprobs) / m
+        cost = np.squeeze(cost)
+
+        return cost
+
+# git_Juilio_eeg_ann_class____back_prop_6
+    def back_prop(self,parameters, cache, X, Y):
+        m = Y.shape[1]
+        W1 = parameters['W1']
+        W2 = parameters['W2']
+        A1 = cache['A1']
+        A2 = cache['A2']
+
+        dZ2 = A2 - Y
+        dW2 = (1 / m) * np.dot(dZ2, A1.T)
+        db2 = (1 / m) * np.sum(dZ2, axis=1, keepdims=True)
+
+        dZ1 = np.multiply(np.dot(W2.T, dZ2), 1 - np.square(A1))
+        dW1 = (1 / m) * np.dot(dZ1, X.T)
+        db1 = (1 / m) * np.sum(dZ1, axis=1, keepdims=True)
+
+        grads = {"dW1": dW1,
+                 "db1": db1,
+                 "dW2": dW2,
+                 "db2": db2}
+
+        return grads
