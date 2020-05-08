@@ -10,6 +10,7 @@ import logging
 
 # git_Ebrahim!Eyoel!Julio_eeg_gui
 
+
 # git_Eyoel_eeg_gui__ ًWindow Initialize_0
 me = Tk()
 me.geometry("500x560") # Size
@@ -158,3 +159,72 @@ text_load.set("No file .. ")
 txt_load=Label(frame_file_lb, textvariable=text_load, font=("Times", 11))
 txt_load.pack(side=LEFT,padx=10,pady=0)
 
+
+####### Features and Image Layer #########
+frame_group = Frame(me)
+frame_group.pack(fill=X)
+Par_group = LabelFrame(frame_group, text = "Parameters", padx=10, pady=10)
+Par_group.pack(side=LEFT,padx=15,pady=5)
+
+
+# Min
+frame1 = Frame(Par_group)
+frame1.pack(fill=X)
+txt_box_min = Entry(frame1)
+txt_box_min.pack(side=RIGHT, padx=5, pady=5)
+txt_box_min.insert(0,"0.4007120253164557")
+
+txt_box_min.bind("<Button-1>", lambda e: txt_box_min.delete(0, END))
+
+lab_min=Label(frame1,text="Min Val")
+lab_min.pack(side=LEFT, anchor=N)
+
+# Max
+frame2 = Frame(Par_group)
+frame2.pack(fill=X)
+txt_box_max = Entry(frame2)
+txt_box_max.pack(side=RIGHT, padx=5, pady=5)
+txt_box_max.insert(0,"0.5992879746835443")
+txt_box_max.bind("<Button-1>", lambda e: txt_box_max.delete(0, END))
+
+lab_max=Label(frame2,text="Max Val")
+lab_max.pack(side=LEFT, anchor=N)
+
+# Mean
+frame3 = Frame(Par_group)
+frame3.pack(fill=X)
+txt_box_mean = Entry(frame3)
+txt_box_mean.pack(side=RIGHT, padx=5, pady=5)
+txt_box_mean.insert(0,"0.372924967491331")
+txt_box_mean.bind("<Button-1>", lambda e: txt_box_mean.delete(0, END))
+
+lab_mean=Label(frame3,text="Mean Val")
+lab_mean.pack(side=LEFT, anchor=N)
+
+# SD
+frame4 = Frame(Par_group)
+frame4.pack(fill=X)
+txt_box_sd = Entry(frame4)
+txt_box_sd.pack(side=RIGHT, padx=5, pady=5)
+txt_box_sd.insert(0,"0.12406002861735548")
+txt_box_sd.bind("<Button-1>", lambda e: txt_box_sd.delete(0, END))
+
+lab_sd=Label(frame4,text="SD Val")
+lab_sd.pack(side=LEFT, anchor=N)
+
+# Var
+frame5 = Frame(Par_group)
+frame5.pack(fill=X)
+txt_box_var = Entry(frame5)
+txt_box_var.pack(side=RIGHT, padx=5, pady=5)
+txt_box_var.insert(0,"0.15390890700539062")
+txt_box_var.bind("<Button-1>", lambda e: txt_box_var.delete(0, END))
+
+lab_var=Label(frame5,text="Var Val")
+lab_var.pack(side=LEFT, anchor=N)
+
+# Check Button
+frame6 = Frame(Par_group)
+frame6.pack(fill=X)
+btn_check = Button(frame6, padx=2, pady=2, bd=4, bg='white', command=lambda: eval_but(), text="Detect movement")
+btn_check.pack(fill=X)
