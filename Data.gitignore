@@ -1,0 +1,8 @@
+#This .gitignore file is used for matlab and cvs files
+
+# Matlab files
+.mat
+
+# Generated CVS files
+*.csv
+
